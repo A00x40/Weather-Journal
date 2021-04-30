@@ -1,0 +1,28 @@
+{
+  "name": "weather-journal",
+  "version": "1.0.0",
+  "description": "FWD Professional Track 2nd project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/A00x40/Weather-Journal.git"
+  },
+  "author": "Ahmed Attia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/A00x40/Weather-Journal/issues"
+  },
+  "homepage": "https://github.com/A00x40/Weather-Journal#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

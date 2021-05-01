@@ -1,5 +1,7 @@
 /* Global Variables */
-const apiKey = "9484dc0d4e8650f8a8188a135ae1f3ee";
+
+// Added units=metric to get temp in degree celisus
+const apiKey = "9484dc0d4e8650f8a8188a135ae1f3ee&units=metric";
 const apiUrl = "http://localhost:5000";
 
 const zipCode = document.getElementById("zip"); 
@@ -13,22 +15,22 @@ const content = document.getElementById("content");
 // Button Listener
 const generate = () => {
     
-    let data = {
-        temp: temp.value,
-        date: new Date(),
-        content: contentFeeling.value,
-        zipCode: zipCode.value
-    }
-    
     apiGetData().then( res => {
         if( res.ok ) {
             res.json().then( apiData => { 
-                data.temp = apiData.main.temp;
+                let data = {
+                    temp: apiData.main.temp,
+                    date: new Date(),
+                    content: contentFeeling.value,
+                    zipCode: zipCode.value
+                }
+            
                 postData(data);
             });
         }
         else throw "City not found";
     }).catch(err => {
+        alert(err);
         console.log(err);
     });
 }
@@ -70,7 +72,7 @@ const updateUI = async () => {
     res.json().then( data => {
         date.innerHTML = "Date : " + data.date;
         if( data.temp )
-            temp.innerHTML =  "Temperature : " + data.temp + " °f";
+            temp.innerHTML =  "Temperature : " + data.temp + " °c";
         if( data.content )
             content.innerHTML = data.content;
     }).catch ( err => {
